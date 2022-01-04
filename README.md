@@ -11,6 +11,7 @@ Here are the steps I took to complete this project:
 2. Upload dataset into R and use R code to format data
           
       Transform Employment Status column into binary variable and all other variables into binary or categorical variables
+      
       Convert variables into numeric variables using as.numeric
           
 3. Run logistic regression model
