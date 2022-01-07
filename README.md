@@ -12,12 +12,13 @@ Here are the steps I took to complete this project:
 
 3. Run Exploratory Data Analysis
           
-          Create data visualizations to display variables in dataset
+   Create data visualizations to display variables in dataset
           
 4. Run logistic regression model
-          Transform Employment Status column into binary variable and all other variables into binary or categorical variables
+   
+   Transform Employment Status column into binary variable and all other variables into binary or categorical variables
       
-          Convert variables into numeric variables using as.numeric
+   Convert variables into numeric variables using as.numeric
           
 5. Interpret results & outline strengths and limitations
 
