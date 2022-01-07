@@ -9,16 +9,70 @@ library(ggplot2)
 install.packages(nnet)
 library(nnet)
 
+install.packages("treemapify")
+library(treemapify)
+
 data.frame(df <- read.csv("/Users/israahmad/Desktop/Equal_Employment_Opportunity.csv"))
 
 ###Exploratory Data Analysis
 #Look at data by tables by counts
 str(df)
 summary(df)  #19707 lines
+
 table(df$Gender)
 table(df$Ethnicity)
 table(df$EEO4.Description)
 table(df$Department)
+
+ggplot(df, aes(Gender))+ 
+geom_bar(stat="count", width=0.7, fill="#1A1A75")+
+geom_text(aes(label = ..count..), stat = "count", vjust = 2, colour = "white")+
+labs(title = "Count of Gender of SCC Workforce", x= "Gender", y= "Count")+
+theme_bw()+
+theme(plot.title= element_text(size= 20), axis.text.x = element_text(hjust = 1),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.border = element_blank(),
+      panel.background = element_blank(),
+      axis.line = element_line(color = 'black'))
+
+
+ggplot(df, aes(Ethnicity))+ 
+  geom_bar(stat="count", width=0.7, fill="#1A1A75")+
+  geom_text(aes(label = ..count..), stat = "count", vjust = -0.5, colour = "black")+
+  labs(title = "Count of Ethnicity of SCC Workforce", x= "Ethnicity", y= "Count")+
+  theme_bw()+
+  theme(plot.title= element_text(size= 20), axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(color = 'black'))
+  
+ggplot(df, aes(Age))+ 
+  geom_bar(stat="count", width=0.7, fill="#1A1A75")+
+  geom_text(aes(label = ..count..), stat = "count", vjust = -0.5, colour = "black")+
+  labs(title = "Count of Age Categories of SCC Workforce", x= "Age Group", y= "Count")+
+  theme_bw()+
+  theme(plot.title= element_text(size= 20), axis.text.x = element_text(hjust = 1),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(color = 'black'))
+
+
+#Chart of Employees by Department
+dept_count <- table(df$Department)
+dept_count <- as.data.frame(dept_count)
+ggplot(dept_count, aes(x=Freq, y= Var1, label= Freq)) + 
+  geom_point(aes(col=Var1), size=7, show.legend = F)+
+    geom_text(color="white", size=2.5, parse = T)+
+  xlab("Count")+ 
+  ylab("Department")+
+  labs(title="Count of Employees by Department")+
+  theme_minimal()
+
 
 #change variables to numeric binary or categorical 
 df$Gender[df$Gender == "Male"] <- 0 #comparison group
@@ -88,3 +142,15 @@ df$EEO.Function <- as.numeric(df$EEO.Function) # convert from chr to numeric
 
 m <- glm(as.factor(Employment.Status) ~ as.factor(Age) + as.factor(Gender) + as.factor(Ethnicity), family = "binomial", df)
 summary(m)
+
+exp(coefficients(m))
+exp(confint(m))
+
+write.csv(df,"WorkforceEquity_AnalyticDataset.csv", row.names = FALSE)
+
+
+
+
+
+
+
