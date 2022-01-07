@@ -21,5 +21,4 @@ Here are the steps I took to complete this project:
    Convert variables into numeric variables using as.numeric
           
 5. Interpret results & outline strengths and limitations
-
-See my medium article here:  
+ 
