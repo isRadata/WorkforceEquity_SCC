@@ -2,7 +2,7 @@
 Logistic Regression Analysis on Workforce Data from County of Santa Clara
 
 
-This project aims to analyze workforce diversity among employees at County of Santa Clara. Using publicly available data from the SCC Open Data Portal, logistic regression analyses were performed to estimate the odds of various racial groups being FTEs at the county.
+This project aims to analyze workforce diversity among employees at County of Santa Clara. Using publicly available data from the SCC Open Data Portal, logistic regression analyses were performed to predict the odds of holding full time employment at the county by various dempgraphic characteristics.
 
 Here are the steps I took to complete this project: 
 
